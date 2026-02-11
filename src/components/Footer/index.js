@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter, FaMedium } from "react-icons/fa";
 
 const FooterContainer = styled.footer`
   position: relative;
@@ -99,6 +99,15 @@ const Footer = () => {
           </SocialLink>
           <SocialLink href={Bio.linkedin} target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
+          </SocialLink>
+          <SocialLink href={Bio.twitter} target="_blank" rel="noopener noreferrer">
+            <FaTwitter />
+          </SocialLink>
+          <SocialLink href={`mailto:${Bio.email}`}>
+            <FaEnvelope />
+          </SocialLink>
+          <SocialLink href={Bio.medium} target="_blank" rel="noopener noreferrer">
+            <FaMedium />
           </SocialLink>
         </SocialLinks>
       </FooterContent>

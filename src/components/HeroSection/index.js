@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
-import { FaGithub, FaLinkedin, FaFileAlt, FaChevronDown } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFileAlt, FaChevronDown, FaEnvelope, FaTwitter, FaMedium } from "react-icons/fa";
 
 /* ─── Styled Components ──────────────────────── */
 
@@ -333,6 +333,15 @@ const HeroSection = () => {
           </IconLink>
           <IconLink href={Bio.linkedin} target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
+          </IconLink>
+          <IconLink href={Bio.twitter} target="_blank" rel="noopener noreferrer">
+            <FaTwitter />
+          </IconLink>
+          <IconLink href={`mailto:${Bio.email}`}>
+            <FaEnvelope />
+          </IconLink>
+          <IconLink href={Bio.medium} target="_blank" rel="noopener noreferrer">
+            <FaMedium />
           </IconLink>
         </CTARow>
       </HeroContent>

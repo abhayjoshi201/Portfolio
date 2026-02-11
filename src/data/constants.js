@@ -14,8 +14,11 @@ export const Bio = {
     "Backend and infrastructure engineer experienced in distributed systems, AWS, Kubernetes, Terraform, and ML/LLM deployment pipelines. Owns production systems end-to-end — from architecture design and CI/CD to monitoring, reliability, and performance optimization.",
   github: "https://github.com/abhayjoshi201",
   resume:
-    "https://drive.google.com/file/d/your-resume-link/view?usp=sharing",
-  linkedin: "https://www.linkedin.com/in/abhay-joshi-201/",
+    "https://drive.google.com/file/d/1y4LqXuTjg9UAlmSRyZekdzuc4y5W77Py/view?usp=sharing",
+  linkedin: "https://www.linkedin.com/in/abhay-joshi-/",
+  twitter: "https://x.com/abhayjoshi1104",
+  email: "abhayjoshisensie@gmail.com",
+  medium: "https://medium.com/@abhayjoshi201",
   title: "Founding / Backend & Infrastructure Engineer",
   headline: "Building and operating production-grade distributed systems.",
   subheading:
