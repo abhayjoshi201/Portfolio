@@ -1,54 +1,82 @@
 import { ThemeProvider } from "styled-components";
-import { useState, useEffect } from "react";
-import { darkTheme, lightTheme } from './utils/Themes.js'
+import { darkTheme } from './utils/Themes.js';
 import Navbar from "./components/Navbar";
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import HeroSection from "./components/HeroSection";
-import About from "./components/About";
+import Summary from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
-import ProjectDetails from "./components/ProjectDetails";
+import Achievements from "./components/Cards/Achievements";
+import SystemsArchitecture from "./components/SystemsArchitecture";
+import Philosophy from "./components/Philosophy";
+import Footer from "./components/Footer";
 import styled from "styled-components";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
   overflow-x: hidden;
-`
+  position: relative;
+`;
 
-const Wrapper = styled.div`
-  background: linear-gradient(38.73deg, rgba(204, 0, 187, 0.15) 0%, rgba(201, 32, 184, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%);
+const DotGrid = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%,30% 98%, 0 100%);
-`
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+`;
+
+const GlowOrb = styled.div`
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+  filter: blur(120px);
+
+  &.orb-1 {
+    top: -200px;
+    right: -100px;
+    background: radial-gradient(circle, #00e5a0, transparent 70%);
+  }
+
+  &.orb-2 {
+    bottom: 30%;
+    left: -200px;
+    background: radial-gradient(circle, #7b61ff, transparent 70%);
+    opacity: 0.08;
+  }
+`;
+
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [openModal, setOpenModal] = useState({ state: false, project: null });
-  console.log(openModal)
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Router >
+    <ThemeProvider theme={darkTheme}>
+      <Router>
         <Navbar />
         <Body>
+          <DotGrid />
+          <GlowOrb className="orb-1" />
+          <GlowOrb className="orb-2" />
           <HeroSection />
-          <Wrapper>
-            <Skills />
-            <Experience />
-          </Wrapper>
-          <Projects openModal={openModal} setOpenModal={setOpenModal} />
-          <Wrapper>
-            <Education />
-            <Contact />
-          </Wrapper>
+          <Summary />
+          <Experience />
+          <Projects />
+          <SystemsArchitecture />
+          <Skills />
+          <Achievements />
+          <Education />
+          <Philosophy />
           <Footer />
-          {openModal.state &&
-            <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />
-          }
         </Body>
       </Router>
     </ThemeProvider>

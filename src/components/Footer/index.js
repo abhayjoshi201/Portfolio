@@ -1,115 +1,109 @@
-import styled from 'styled-components';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import { Bio } from '../../data/constants';
-import { ListItemIcon } from '@mui/material';
+import React from "react";
+import styled from "styled-components";
+import { Bio } from "../../data/constants";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const FooterContainer = styled.div`
-  width: 100%;
-  padding: 2rem 0;
+const FooterContainer = styled.footer`
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid ${({ theme }) => theme.border};
+  padding: 48px 24px;
   display: flex;
   justify-content: center;
-  //background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
 `;
 
-
-const FooterWrapper = styled.footer`
-  width: 100%;
+const FooterContent = styled.div`
   max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const Left = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  align-items: center;
-  padding: 1rem;
-  color: ${({ theme }) => theme.text_primary};
+  gap: 6px;
 `;
 
-const Logo = styled.h1`
-  font-weight: 600;
-  font-size: 20px;
+const Logo = styled.div`
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
   color: ${({ theme }) => theme.primary};
 `;
 
-const Nav = styled.nav`
-  width: 100%;
-  max-width: 800px;
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  justify-content: center;
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    text-align: center;
-    font-size: 12px;
-  }
+const Copyright = styled.div`
+  font-size: 13px;
+  color: ${({ theme }) => theme.text_tertiary};
 `;
 
-const NavLink = styled.a`
-color: ${({ theme }) => theme.text_primary};
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: color 0.2s ease-in-out;
+const SocialLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const SocialLink = styled.a`
+  font-size: 20px;
+  color: ${({ theme }) => theme.text_tertiary};
+  transition: all 0.2s ease;
+  padding: 8px;
+  border-radius: 6px;
+
   &:hover {
     color: ${({ theme }) => theme.primary};
-  }
-  @media (max-width: 768px) {
-    font-size: 1rem;
+    background: ${({ theme }) => theme.primaryDim};
   }
 `;
 
-const SocialMediaIcons = styled.div`
+const StatusBadge = styled.div`
   display: flex;
-  margin-top: 1rem;
-`;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: ${({ theme }) => theme.text_tertiary};
 
-const SocialMediaIcon = styled.a`
-  display: inline-block;
-  margin: 0 1rem;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.text_primary};
-  transition: color 0.2s ease-in-out;
-  &:hover {
-    color: ${({ theme }) => theme.primary};
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.primary};
+    box-shadow: 0 0 8px ${({ theme }) => theme.primaryGlow};
   }
 `;
 
-const Copyright = styled.p`
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: ${({ theme }) => theme.soft2};
-  text-align: center;
-`;
-
-function Footer() {
+const Footer = () => {
   return (
     <FooterContainer>
-      <FooterWrapper>
-        <Logo>Abhay Joshi</Logo>
-        <Nav>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#experience">Experience</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#education">Education</NavLink>
-        </Nav>
-        <SocialMediaIcons>
-         {/* //<SocialMediaIcon href={Bio.linktree} target="display">< icon/></SocialMediaIcon> */}
-          <SocialMediaIcon href={Bio.twitter} target="display"><TwitterIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.linkedin} target="display"><LinkedInIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
-        </SocialMediaIcons>
-        <Copyright>
-          &copy; 2023 Abhay Joshi. All rights reserved.
-        </Copyright>
+      <FooterContent>
+        <Left>
+          <Logo>{"{AJ}"}</Logo>
+          <Copyright>© {new Date().getFullYear()} Abhay Joshi. All systems operational.</Copyright>
+        </Left>
 
-      </FooterWrapper>
+        <StatusBadge>systems online</StatusBadge>
+
+        <SocialLinks>
+          <SocialLink href={Bio.github} target="_blank" rel="noopener noreferrer">
+            <FaGithub />
+          </SocialLink>
+          <SocialLink href={Bio.linkedin} target="_blank" rel="noopener noreferrer">
+            <FaLinkedin />
+          </SocialLink>
+        </SocialLinks>
+      </FooterContent>
     </FooterContainer>
   );
-}
+};
 
 export default Footer;
